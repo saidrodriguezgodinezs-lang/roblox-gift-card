@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>⚠️ ALERTA DE SISTEMA</title>
+    <style>
+        body { background-color: black; color: #00ff00; font-family: 'Courier New', Courier, monospace; overflow: hidden; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        #mensaje { font-size: 1.2rem; padding: 20px; }
+        .rojo { color: red; font-weight: bold; }
+    </style>
+</head>
+<body onclick="iniciarSusto()">
+
+    <div id="mensaje">
+        <p id="texto">>> CARGANDO CONTENIDO...</p>
+        <p>(Toca la pantalla para continuar)</p>
+    </div>
+
+    <audio id="terror" src="https://www.soundjay.com/horror/sounds/horror-ambience-01.mp3"></audio>
+
+    <script>
+        function iniciarSusto() {
+            // 1. Poner pantalla completa obligatoria
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) { elem.requestFullscreen(); }
+            
+            let texto = document.getElementById("texto");
+            let audio = document.getElementById("terror");
+            audio.play();
+
+            // 2. Secuencia de "Hackeo"
+            texto.innerHTML = "📡 CONEXIÓN ESTABLECIDA...<br>PROCESANDO DATOS...<br>EXTRAYENDO CONTRASEÑAS DE ROBLOX... 🔓";
+            
+            setTimeout(() => {
+                texto.innerHTML = "<span class='rojo'>⚠️ ERROR CRÍTICO ⚠️</span><br><br>ACCESO TOTAL CONCEDIDO.<br><br>ATENTAMENTE: EL JEFE SANTI 💀";
+            }, 5000);
+
+            // 3. Quitar todo después de 10 segundos y "liberar" el cel
+            setTimeout(() => {
+                if (document.exitFullscreen) { document.exitFullscreen(); }
+                alert("Sistema restaurado. Saludos de Santi.");
+                window.location.href = "https://www.google.com"; // Lo manda a Google como si nada
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
